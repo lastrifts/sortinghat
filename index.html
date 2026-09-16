@@ -44,14 +44,22 @@
   let currentAudio = null;
 
   document.getElementById("playBtn").addEventListener("click", () => {
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
+    // Don't play anything if a sound is currently playing
+    if (currentAudio && !currentAudio.paused) {
+      return;
     }
+
     const choice = sounds[Math.floor(Math.random() * sounds.length)];
+
     currentAudio = new Audio(choice);
+
     currentAudio.play().catch(err => {
       alert("Couldn't play " + choice + ". Make sure the 'audio' folder is next to this HTML file. Error: " + err.message);
+    });
+
+    // Allow another sound after this one finishes
+    currentAudio.addEventListener("ended", () => {
+      currentAudio = null;
     });
   });
 </script>
