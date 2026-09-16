@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Random House Sound</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a2e;
+    font-family: sans-serif;
+  }
+  button {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: none;
+    background: #ffd700;
+    color: #1a1a2e;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    transition: transform 0.1s ease;
+  }
+  button:active {
+    transform: scale(0.95);
+  }
+</style>
+</head>
+<body>
+
+<button id="playBtn">▶ Play</button>
+
+<script>
+  const sounds = [
+    "audio/gryffindor.mp3",
+    "audio/slytherin.mp3",
+    "audio/ravenclaw.mp3",
+    "audio/hufflepuff.mp3"
+  ];
+
+  let currentAudio = null;
+
+  document.getElementById("playBtn").addEventListener("click", () => {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+    const choice = sounds[Math.floor(Math.random() * sounds.length)];
+    currentAudio = new Audio(choice);
+    currentAudio.play().catch(err => {
+      alert("Couldn't play " + choice + ". Make sure the 'audio' folder is next to this HTML file. Error: " + err.message);
+    });
+  });
+</script>
+
+</body>
+</html>
