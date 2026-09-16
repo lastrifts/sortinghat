@@ -4,36 +4,34 @@
 <meta charset="UTF-8">
 <title>Random House Sound</title>
 <style>
-  body {
+  html, body {
     margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1a1a2e;
-    font-family: sans-serif;
+    height: 100%;
+    width: 100%;
   }
   button {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+    width: 100vw;
+    height: 100vh;
+    display: block;
     border: none;
-    background: #ffd700;
-    color: #1a1a2e;
-    font-size: 20px;
+    background: #1a1a2e;
+    color: #ffd700;
+    font-size: 32px;
     font-weight: bold;
+    font-family: sans-serif;
     cursor: pointer;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-    transition: transform 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    transition: background 0.1s ease;
   }
   button:active {
-    transform: scale(0.95);
+    background: #29294d;
   }
 </style>
 </head>
 <body>
 
-<button id="playBtn">▶ Play</button>
+<button id="playBtn">▶ Play click anywhere)</button>
 
 <script>
   const sounds = [
